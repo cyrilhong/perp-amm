@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+### 題目說明
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+可用 JavaScript, Typescript 或 Python 任一語言實作，如需要使用其他語言時作請先來信。請於 GitHub 建立一個 private repository 將程式碼推送到此 repository，並且加入 [dev@perp.fi](mailto:dev@perp.fi) 為協作者，並且在寄送題目後三天內提供 GitHub 網址。
 
-## Available Scripts
+請設計一個兌幣所模組，系統初始參數有二個 Rt 與 Ru，分別是 TWD 與 USD 的儲備數量 (TWD reserve & USD reserve)。該模組有一個 trade 功能，使用者可以用 TWD 兌換 USD 或是反過來，兌換規則如下：
 
-In the project directory, you can run:
+當使用者使用 x 個 TWD 想要來換 USD 時，系統透過以下公式計算出要給使用者的 USD 數量 y：
 
-### `yarn start`
+```
+(Rt + x) * (Ru + y) = Rt * Ru
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+假設台幣庫存有 10,000 元台幣，美金儲備有 1,000 美金，當使用者使用 6000 台幣想要兌換美金時，可得到如下的 375 美金：
 
-### `yarn test`
+```
+(10,000 + 6,000) * (1,000 + y) = 10,000 * 1,000
+y = -375
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `yarn build`
+當 USD 給使用者後，系統中的儲備會隨之改變：
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+Rt` = 10,000 + 6,000 = 16,000
+Ru` = 1,000 - 375 = 625
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+下個使用者交易時則會採用新的儲備數量。
 
-### `yarn eject`
+除上述邏輯外請撰寫測試，程式不需要有 GUI，僅需要將功能封裝在模組內供呼叫使用與測試即可。提交時請於 README 撰寫如何使用程式以及執行測試。
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+如有任何問題也請隨時聯絡信件窗口，謝謝。
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+祝順利
