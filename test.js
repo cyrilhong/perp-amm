@@ -16,6 +16,6 @@ describe('AMM', ()=>{
     it('allocate 100 USD, the k remains the same value',()=>{
         let result = amm(arg)
         // console.log(result)
-        assert.equal((arg.storeUSD*arg.storeTWD) ,arg.k)
+        assert.equal((result.storeUSD*result.storeTWD) ,arg.k)
     });
 });
