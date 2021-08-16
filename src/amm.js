@@ -1,18 +1,29 @@
 function amm(arg){
-    let storeTWD = 10000;
-    let storeUSD = 1000;
-    let k = storeTWD*storeUSD
-    // debugger
-    if(!!arg.usd&&typeof(arg.usd)=="number"){
-        storeUSD -= arg.usd
-        storeTWD = k/storeUSD
-        console.log(storeTWD);
-        return storeTWD
-    }else if(!!arg.twd&&typeof(arg.twd)=="number"){
-        storeTWD -= arg.twd
-        storeUSD = k/storeTWD
-        console.log(storeUSD);
-        return storeUSD
+    if(arg.inputUSD){
+        let tempStoreTWD = 0
+        let tempStoreUSD = arg.storeUSD + arg.inputUSD
+        tempStoreTWD = arg.k/tempStoreUSD
+        return(
+            {
+                storeUSD:tempStoreUSD,
+                storeTWD : tempStoreTWD,
+                val: (tempStoreTWD - arg.storeTWD),
+                currency: "TWD"
+            }
+        )
+    }else if(arg.inputTWD){
+      // debugger
+        let tempStoreUSD = 0
+        let temStoreTWD = arg.storeTWD + arg.inputTWD
+        tempStoreUSD = arg.k/temStoreTWD
+        return(
+            {
+                storeTWD: temStoreTWD,
+                storeUSD: arg.k/temStoreTWD,
+                val: (tempStoreUSD - arg.storeUSD),
+                currency: "USD"
+            }
+        )
     }
 }
 
