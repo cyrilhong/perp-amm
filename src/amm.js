@@ -2,7 +2,7 @@ function amm(arg){
     let storeTWD = 10000;
     let storeUSD = 1000;
     let k = storeTWD*storeUSD
-    debugger
+    // debugger
     if(!!arg.usd&&typeof(arg.usd)=="number"){
         storeUSD -= arg.usd
         storeTWD = k/storeUSD
