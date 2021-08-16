@@ -10,6 +10,8 @@ function App() {
   const [inputTWD, setInputTWD] = useState(0)
   const k = storeUSD*storeTWD
   const [exchange, setExchange] = useState(0)
+  const [tempInputNumber,setTempInputNumber] = useState(0)
+  const [exchangeCurrency, setExchangeCurrency] = useState('')
   useEffect(()=>{
     // console.log(storeUSD);
     // console.log(storeTWD);
@@ -29,14 +31,16 @@ function App() {
   const amm = ()=>{
     let result = Amm(arg)
     if(result.currency =='USD'){
-      setStoreUSD(result.storeUSD)
-      setStoreTWD(result.storeTWD)
-      setExchange(Math.abs(result.val))
+      setTempInputNumber(inputTWD)
     }else{
-      setStoreUSD(result.storeUSD)
-      setStoreTWD(result.storeTWD)
-      setExchange(Math.abs(result.val))
+      setTempInputNumber(inputUSD)
     }
+    setStoreUSD(result.storeUSD)
+    setStoreTWD(result.storeTWD)
+    setExchange(Math.abs(result.val))
+    setExchangeCurrency(result.currency)
+    setInputTWD(0)
+    setInputUSD(0)
     // console.log(result);
   }
   // const amm = ()=>{
@@ -120,7 +124,7 @@ function App() {
             <br />
             <Grid item xs={12}>
               <Button variant="contained" color="primary" onClick={()=>{amm()}}>Exchang</Button>
-              {exchange==0?'':<h1>You get {inputUSD?'TWD':'USD'} {(exchange).toFixed(2)}</h1>}
+              {exchange==0?'':<h1>Changed {tempInputNumber} {exchangeCurrency=='USD'?'TWD':'USD'} into {exchangeCurrency} {(exchange).toFixed(2)}</h1>}
             </Grid>
           </Grid>
         </Grid>
