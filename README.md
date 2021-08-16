@@ -1,3 +1,17 @@
+## How to run the code?
+
+### Run the front-end with React
+
+1. $ git clone https://github.com/cyrilhong/perp-amm.git
+2. $ cd perp-amm
+3. $ yarn install
+4. $ yarn start
+5. open localhost:3000 in your default brwoser, simply type number in the input box to simulating AMM model, then click exchange, you will get the exchange value.
+
+### Run the test
+
+1. underneath perp-amm, run $ npm test test.js
+
 ### 題目說明
 
 可用 JavaScript, Typescript 或 Python 任一語言實作，如需要使用其他語言時作請先來信。請於 GitHub 建立一個 private repository 將程式碼推送到此 repository，並且加入 [dev@perp.fi](mailto:dev@perp.fi) 為協作者，並且在寄送題目後三天內提供 GitHub 網址。
@@ -31,16 +45,3 @@ Ru` = 1,000 - 375 = 625
 
 除上述邏輯外請撰寫測試，程式不需要有 GUI，僅需要將功能封裝在模組內供呼叫使用與測試即可。提交時請於 README 撰寫如何使用程式以及執行測試。
 
-### How to run the code?
-
-#### Run the front-end with React
-
-1. $ git clone https://github.com/cyrilhong/perp-amm.git
-2. $ cd perp-amm
-3. $ yarn install
-4. $ yarn start
-5. open localhost:3000 in your default brwoser, simply type number in the input box to simulating AMM model, then click exchange, you will get the exchange value.
-
-#### Run the test
-
-1. underneath perp-amm, run $ npm test test.js
