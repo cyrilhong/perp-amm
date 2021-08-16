@@ -30,3 +30,16 @@ Ru` = 1,000 - 375 = 625
 下個使用者交易時則會採用新的儲備數量。
 
 除上述邏輯外請撰寫測試，程式不需要有 GUI，僅需要將功能封裝在模組內供呼叫使用與測試即可。提交時請於 README 撰寫如何使用程式以及執行測試。
+
+### How to run the code?
+
+#### Run the front-end with React
+
+1. $ git clone https://github.com/cyrilhong/perp-amm.git
+2. $ cd perp-amm
+3. $ yarn install
+4. $ yarn start
+
+#### Run the test
+
+1. underneath perp-amm, run $ npm test test.js
