@@ -39,6 +39,7 @@ Ru` = 1,000 - 375 = 625
 2. $ cd perp-amm
 3. $ yarn install
 4. $ yarn start
+5. open localhost:3000 in your default brwoser, simply type number in the input box to simulating AMM model, then click exchange, you will get the exchange value.
 
 #### Run the test
 
