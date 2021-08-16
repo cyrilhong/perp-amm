@@ -1,6 +1,7 @@
 import './App.css';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import Amm from './amm'
+import {Button, Container, Grid,Paper} from '@material-ui/core'
 
 function App() {
   const [storeUSD, setStoreUSD] = useState(1000)
@@ -86,17 +87,44 @@ function App() {
 
   return (
     <div className="App">
-      <h1>storeTWD: {(storeTWD).toFixed(2)}</h1>
-      <h1>storeUSD: {(storeUSD.toFixed(2))}</h1>
-      <h1>Rate: {(storeTWD/storeUSD).toFixed(2)}</h1>
-      <h3>USD</h3>
-      <input value={inputUSD} onChange={(e)=>getInputUSD(e)} onFocus={(e)=>handleFocus(e)} type="number" step="1" min="0"/>
-      <h3>TWD</h3>
-      <input value={inputTWD} onChange={(e)=>{getInputTWD(e)}} onFocus={(e)=>handleFocus(e)} type="number" step="0.1" min="0"/>
-      <br />
-      <br />
-      <button onClick={()=>{amm()}}>Exchang</button>
-      {exchange==0?'':<h1>You get {inputUSD?'TWD':'USD'} {(exchange).toFixed(2)}</h1>}
+      <Container>
+        <Grid spacing={12}>
+          <Grid container>
+            <Grid item xs={12}>
+              <h1>The Vault</h1>
+            </Grid>
+            <Grid item xs={6}>
+              <h2>Stored TWD: {(storeTWD).toFixed(2)}</h2>
+            </Grid>
+            <Grid item xs={6}>
+              <h2>Stored USD: {(storeUSD.toFixed(2))}</h2>
+            </Grid>
+            <Grid item xs={12}>
+              <h2>Rate: {(storeTWD/storeUSD).toFixed(2)}</h2>
+            </Grid>
+          </Grid>
+          <hr/>
+          <Grid container>
+            <Grid item xs={12}>
+              <h1>Enter numbers to exchange</h1>
+            </Grid>
+            <Grid item xs={6}>
+              <h3>USD</h3>
+              <input value={inputUSD} onChange={(e)=>getInputUSD(e)} onFocus={(e)=>handleFocus(e)} type="number" step="1" min="0"/>
+            </Grid>
+            <Grid item xs={6}>
+            <h3>TWD</h3>
+            <input value={inputTWD} onChange={(e)=>{getInputTWD(e)}} onFocus={(e)=>handleFocus(e)} type="number" step="0.1" min="0"/>
+            </Grid>
+            <br />
+            <br />
+            <Grid item xs={12}>
+              <Button variant="contained" color="primary" onClick={()=>{amm()}}>Exchang</Button>
+              {exchange==0?'':<h1>You get {inputUSD?'TWD':'USD'} {(exchange).toFixed(2)}</h1>}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 }
